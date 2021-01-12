@@ -1,0 +1,4 @@
+StudentGradeCalculator.class
+Pair.class
+GradesWeightOverMaxException.class
+GradesWeightBelowMinException.class

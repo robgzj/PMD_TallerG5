@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>es.unican.ca</groupId>
+	<artifactId>PruebaMaven</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<!-- Informes del Site -->
+	<reporting>
+		<plugins>
+
+			<!-- Definición y configuración del plugin PMD -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>2.4</version>
+
+				<configuration>
+
+					<!-- Codificación del código fuente -->
+					<sourceEncoding>utf-8</sourceEncoding>
+
+					<!-- Para el análisis de CPD: Si dos bloques de al menos 20 palabras 
+						son iguales se reportará en el resultado -->
+					<minimumTokens>20</minimumTokens>
+
+					<!-- Código fuente para 1.5 -->
+					<targetJdk>1.4</targetJdk>
+
+					<!-- ¿Qué reglas deseamos aplicar? Por defecto si no se dice nada se 
+						aplican las reglas: basic, unusedcode, imports Puede ver un listado de todos 
+						los ruleset en: http://pmd.sourceforge.net/rules/index.html -->
+					<rulesets>
+						<!-- Estas reglas están dentro del JAR del PMD -->
+						<ruleset>/rulesets/basic.xml</ruleset>
+						<ruleset>/rulesets/braces.xml</ruleset>
+						<ruleset>/rulesets/design.xml</ruleset>
+						<ruleset>/rulesets/unusedcode.xml</ruleset>
+						<ruleset>/rulesets/imports.xml</ruleset>
+						<ruleset>/rulesets/controversial.xml</ruleset>
+						<ruleset>/rulesets/migrating.xml</ruleset>
+						<ruleset>/rulesets/strings.xml</ruleset>
+						<ruleset>/rulesets/optimizations.xml</ruleset>
+						
+	
+						<!-- Puedo definir mis propios ruleset o modificar uno existente, colocarlo 
+							en el sistema de fichero y hacer referencia a el. Por ejemplo: <ruleset>c:/java/pmd/my_rules/naming2.xml</ruleset> -->
+					</rulesets>
+
+					<!-- Si no ponemos reportSets se generan todos los informes. Si queremos 
+						desahilitar alguno podemos comentarlo -->
+					<reportSets>
+						<reportSet>
+							<reports>
+								<report>pmd</report>
+								<report>cpd</report>
+							</reports>
+						</reportSet>
+					</reportSets>
+
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+</project>
